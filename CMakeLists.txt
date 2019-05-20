@@ -10,7 +10,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(. ../src)
 
-set(SOURCE_LIST ./src/Main.cpp)
+set(SOURCE_LIST 
+	./src/Main.cpp
+	./src/Vector.cpp
+	)
 
 add_executable(${PROJECTNAME} ${SOURCE_LIST})
 
