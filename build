@@ -5,6 +5,8 @@ BUILD_TYPE="Release"
 #BUILD_TYPE="Debug"
 BUILD_DIR="$BUILD_TYPE"
 OUTPUT_DIR=".."
+COMPILER="GCC"
+COMPILER="CLANG"
 
 func_help()
 {
@@ -29,7 +31,7 @@ func_build()
 	mkdir -p "$BUILD_DIR"
 	pushd "$BUILD_DIR"
 
-	cmake -DCMAKE_BUILD_TYPE="$BUILD_TYPE" .. 2>&1 | tee ../build.log
+	cmake -DCMAKE_BUILD_TYPE="$BUILD_TYPE" -DCOMPILER="${COMPILER}" .. 2>&1 | tee ../build.log
 	make -j 2>&1 | tee -a ../build.log
 	cp ./${PROJECT_NAME} $OUTPUT_DIR/${PROJECT_NAME}_${BUILD_TYPE}
 	sync
