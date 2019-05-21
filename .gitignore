@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+Release/
+TC++PL_Release
+Debug/
+TC++PL_Debug
+build.log

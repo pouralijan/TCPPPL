@@ -2,6 +2,7 @@
 
 PROJECT_NAME="TC++PL"
 BUILD_TYPE="Release"
+#BUILD_TYPE="Debug"
 BUILD_DIR="$BUILD_TYPE"
 OUTPUT_DIR=".."
 
@@ -16,7 +17,7 @@ func_clean()
 {
 	start_time=$(date +%s.%N)
 	echo "Cleaning..."
-	rm -rf ./Release ./Debug ./RelWithDebInfo ./build.log ./${PROJECT_NAME} ./build.log
+	rm -rf ./Release ./Debug ./RelWithDebInfo ./build.log ./${PROJECT_NAME}_${BUILD_TYPE} ./build.log
 	echo "Cleaning complete."
 	end_time=$(date +%s.%N)
 	func_calculate_duration true
@@ -30,7 +31,7 @@ func_build()
 
 	cmake -DCMAKE_BUILD_TYPE="$BUILD_TYPE" .. 2>&1 | tee ../build.log
 	make -j 2>&1 | tee -a ../build.log
-	cp ./${PROJECT_NAME} $OUTPUT_DIR
+	cp ./${PROJECT_NAME} $OUTPUT_DIR/${PROJECT_NAME}_${BUILD_TYPE}
 	sync
 	popd
 	end_time=$(date +%s.%N)
@@ -40,7 +41,7 @@ func_build()
 func_run()
 {
 	start_time=$(date +%s.%N)
-	./${PROJECT_NAME}
+	./${PROJECT_NAME}_${BUILD_TYPE}
 	end_time=$(date +%s.%N)
 	func_calculate_duration
 }

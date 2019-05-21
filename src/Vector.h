@@ -10,7 +10,6 @@ namespace MyCode{
 		private:
 			double* elem;
 			int sz;
-
 	};
 }
 

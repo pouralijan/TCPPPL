@@ -5,6 +5,6 @@
 int main()
 {
 	MyCode::Vector v(10);
-	std::cout << v[0] << std::endl;
+	std::cout << v[-1] << std::endl;
 	return EXIT_SUCCESS;
 }
