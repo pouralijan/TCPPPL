@@ -4,10 +4,11 @@
 
 int main()
 {
-	static_assert(3 <= sizeof(int), "int are too small");
+	static_assert(0 <= sizeof(int), "int are too small");
 	
 	MyCode::Vector v(10);
-	std::cout << v[1] << std::endl;
+	for(int i=0; i<v.size(); i++)
+		std::cout << v[i] << std::endl;
 	v.size();
 	
 	return EXIT_SUCCESS;
